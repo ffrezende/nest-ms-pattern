@@ -1,1 +1,1 @@
-export { default as AppController } from './app/app.controller'
+export { default as CatsController } from './cats'

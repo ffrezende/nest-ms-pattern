@@ -1,1 +1,1 @@
-export { default as AppService } from './app/app.service'
+export { default as CatsService } from './cats/cats.service'
