@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { BadRequestException, Injectable } from '@nestjs/common'
 import { IPokemon, IPokemonResult } from 'src/common/interfaces/pokemon/IPokemon'
 import axiosInstance from '../../common/fetcher'
 
@@ -7,11 +7,9 @@ class PokemonService {
 	private BASE_URL = 'https://pokeapi.co/api/v2/pokemon'
 
 	getPokemon = async (id: string): Promise<any> => {
-		const {
-			data: { results },
-		} = await axiosInstance.get(`${this.BASE_URL}/${id}`)
+		const response = await axiosInstance.get(`${this.BASE_URL}/${id}`)
 
-		return results
+		return response.data
 	}
 
 	getPokemons = async (): Promise<Array<IPokemon>> => {
