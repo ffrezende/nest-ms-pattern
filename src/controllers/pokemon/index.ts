@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common'
+import { Controller, Get, Param, Query } from '@nestjs/common'
 import { PokemonService } from '../../services'
 
 @Controller('pokemon')
@@ -6,8 +6,8 @@ class PokemonController {
 	constructor(private readonly pokemonService: PokemonService) {}
 
 	@Get('names')
-	async getPokemons() {
-		return await this.pokemonService.getPokemons()
+	async getPokemons(@Query('offset') offset: string) {
+		return await this.pokemonService.getPokemons(offset)
 	}
 
 	@Get(':id')
