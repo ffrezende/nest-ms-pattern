@@ -4,7 +4,7 @@ import axiosInstance from '../../common/fetcher'
 
 @Injectable()
 class PokemonService {
-	private BASE_URL = 'https://pokeapi.co/api/v2/pokemon'
+	private BASE_URL = 'https://pokeapi.co/api/v2/pokemon/'
 
 	getPokemon = async (pokemonName: string): Promise<IPokemonInfo> => {
 		const { data } = await axiosInstance.get<IPokemonInfo>(`${this.BASE_URL}/${pokemonName}`)
