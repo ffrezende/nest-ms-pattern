@@ -1,13 +1,12 @@
 import { Injectable } from '@nestjs/common'
 import { IPokemon, IPokemonInfo } from 'src/common/interfaces/pokemon/IPokemon'
 import axiosInstance from '../../common/fetcher'
+import { BASE_URL_POKEMON } from 'src/common/constants'
 
 @Injectable()
 class PokemonService {
-	private BASE_URL = 'https://pokeapi.co/api/v2/pokemon/'
-
 	getPokemon = async (pokemonName: string): Promise<IPokemonInfo> => {
-		const { data } = await axiosInstance.get<IPokemonInfo>(`${this.BASE_URL}/${pokemonName}`)
+		const { data } = await axiosInstance.get<IPokemonInfo>(`${BASE_URL_POKEMON}/${pokemonName}`)
 
 		return data
 	}
@@ -18,7 +17,7 @@ class PokemonService {
 
 		const {
 			data: { results },
-		} = await axiosInstance.get(`${this.BASE_URL}${offsetPagination}`)
+		} = await axiosInstance.get(`${BASE_URL_POKEMON}${offsetPagination}`)
 
 		return results
 	}
